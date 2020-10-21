@@ -9,13 +9,14 @@ const dniLeters = ["t", "r", "w", "a", "g","m", "y", "f", "p", "d", "x", "b", "n
 
 function checkDni() {
 
-    // añadiendo el .value cojo el valor del input que es una propiedad de los inputs
+    // añadiendo el .value cojo el valor del input que es una propiedad de los inputs. 
+    // Lo he de poner dentro de la funcion porque si la inicializo fuera el primer valor seria vacio. Pero al darle iniciar la variable dentro de la funcion coge el valor que tiene en el momento de iniciar la función. Hay que acceder al contenido del dni cuando hago click.
     const dni = document.getElementById('input').value;
 
     // Comprobar si la letra del DNI es correcta
     
     let respuesta = '';
-    let opcionCorrecta = document.getElementById('answer');
+    let opcionAnswer = document.getElementById('answer');
 
     const posicionLetra = dni.slice(0,8) % 23;
     
@@ -24,13 +25,14 @@ function checkDni() {
     if(letraDni === dni[8].toLowerCase()) {
 
         respuesta = 'Este dni es correcto';
-        opcionCorrecta.classList.add('blue');
+        opcionAnswer.classList.remove('red');
+        opcionAnswer.classList.add('blue');
 
     }else{
 
         respuesta = "Este dni no existe";
-        opcionCorrecta.classList.remove('blue');
-        opcionCorrecta.classList.add('red');
+        opcionAnswer.classList.remove('blue');
+        opcionAnswer.classList.add('red');
     }
 
     let elementoRespuesta = document.getElementById('elementoEmergente');
